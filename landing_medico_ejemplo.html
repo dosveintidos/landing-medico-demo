@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Valentina Ríos · Cardiología Clínica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EEF1EC;
+    --card: #FBFBF9;
+    --ink: #142420;
+    --ink-soft: #45524C;
+    --teal: #1F4B43;
+    --teal-deep: #0F2E28;
+    --gold: #C68B33;
+    --line: #D3D8D2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+  a{color:inherit;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:10;
+    background:rgba(238,241,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+  .brand{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .brand span{color:var(--teal);}
+  .navlinks{display:flex; gap:28px; font-size:14px;}
+  .navlinks a{text-decoration:none; color:var(--ink-soft);}
+  .cta-btn{
+    background:var(--teal); color:#fff; border:none;
+    padding:10px 20px; border-radius:3px; font-size:14px; font-weight:500;
+    text-decoration:none; white-space:nowrap;
+  }
+  @media (max-width:720px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:72px 0 56px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;}
+  .hero h1{font-size:44px; line-height:1.12; margin:14px 0 18px; max-width:520px;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:440px; margin-bottom:28px;}
+  .hero-cta{display:flex; gap:14px; align-items:center; flex-wrap:wrap;}
+  .btn-primary{background:var(--gold); color:var(--teal-deep); padding:13px 24px; border-radius:3px; font-weight:600; text-decoration:none; font-size:15px;}
+  .btn-ghost{padding:13px 4px; text-decoration:none; font-size:15px; color:var(--teal); border-bottom:1px solid var(--teal);}
+  .photo-frame{
+    background:linear-gradient(155deg, var(--teal) 0%, var(--teal-deep) 100%);
+    border-radius:4px; aspect-ratio:4/5; position:relative; overflow:hidden;
+    display:flex; align-items:flex-end;
+  }
+  .photo-frame .ph-label{
+    color:rgba(255,255,255,0.55); font-family:'IBM Plex Mono',monospace; font-size:11px;
+    padding:16px; letter-spacing:0.05em;
+  }
+  .pulse{position:absolute; top:0; left:0; width:100%; opacity:0.35;}
+
+  @media (max-width:780px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:32px;}
+  }
+
+  /* ---------- STRIP DIVIDER (signature EKG line) ---------- */
+  .ekg-strip{padding:6px 0; background:var(--teal-deep);}
+  .ekg-strip svg{display:block; width:100%; height:34px;}
+
+  /* ---------- SOBRE MÍ ---------- */
+  .section{padding:64px 0;}
+  .section-head{max-width:560px; margin-bottom:36px;}
+  .section-head h2{font-size:28px; margin-top:10px;}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .about-grid p{color:var(--ink-soft); margin-bottom:14px; font-size:15.5px;}
+  .credentials{list-style:none; border-top:1px solid var(--line);}
+  .credentials li{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:14px 0; border-bottom:1px solid var(--line); font-size:14.5px;
+  }
+  .credentials li span:first-child{color:var(--ink-soft);}
+  .credentials li span:last-child{font-weight:500; text-align:right;}
+  @media (max-width:780px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* ---------- ESPECIALIDADES ---------- */
+  .esp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .esp-card{background:var(--card); padding:28px 24px;}
+  .esp-card .num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold);}
+  .esp-card h3{font-size:18px; margin:10px 0 8px;}
+  .esp-card p{font-size:14px; color:var(--ink-soft);}
+  @media (max-width:780px){ .esp-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CONTENIDO (video/IG) ---------- */
+  .content-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  .clip{
+    aspect-ratio:9/16; border-radius:4px; background:linear-gradient(200deg,#DDE3DA,#C9D1C4);
+    display:flex; align-items:flex-end; padding:12px; position:relative; overflow:hidden;
+  }
+  .clip .tag{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--teal-deep); background:rgba(255,255,255,0.7); padding:4px 8px; border-radius:2px;}
+  @media (max-width:780px){ .content-strip{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- CONFIANZA ---------- */
+  .trust-row{display:flex; flex-wrap:wrap; gap:34px; align-items:center; padding:28px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .trust-row .item{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-soft); letter-spacing:0.03em;}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0; cursor:pointer; font-size:15.5px; font-weight:500;
+  }
+  .faq-q::after{content:'+'; font-size:20px; color:var(--teal); font-weight:400;}
+  .faq-item.open .faq-q::after{content:'–';}
+  .faq-a{max-height:0; overflow:hidden; font-size:14.5px; color:var(--ink-soft); transition:max-height 0.25s ease;}
+  .faq-item.open .faq-a{max-height:200px; padding-bottom:18px;}
+
+  /* ---------- FOOTER / CONTACTO ---------- */
+  footer{background:var(--teal-deep); color:#EDEFEA; padding:56px 0 28px; margin-top:40px;}
+  .foot-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:32px; margin-bottom:40px;}
+  footer h2{color:#fff; font-size:26px; margin-bottom:14px; max-width:360px;}
+  footer p{color:rgba(237,239,234,0.65); font-size:14.5px; max-width:340px;}
+  .foot-col h4{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;}
+  .foot-col a{display:block; text-decoration:none; color:rgba(237,239,234,0.8); font-size:14.5px; margin-bottom:9px;}
+  .foot-bottom{border-top:1px solid rgba(237,239,234,0.15); padding-top:20px; font-size:12.5px; color:rgba(237,239,234,0.45); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  @media (max-width:780px){ .foot-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Dra. Valentina Ríos <span>· Cardiología</span></div>
+    <nav class="navlinks">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#contenido">Contenido</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="cta-btn">Reservar consulta</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Cardióloga · MP 45.821 · Córdoba</div>
+      <h1>Cuidar el corazón con criterio clínico y tiempo real para escuchar.</h1>
+      <p class="lede">Consultorio de cardiología clínica y prevención cardiovascular. Diagnóstico basado en evidencia, explicado en un lenguaje que se entiende.</p>
+      <div class="hero-cta">
+        <a href="#contacto" class="btn-primary">Reservar consulta</a>
+        <a href="#contenido" class="btn-ghost">Ver video de presentación</a>
+      </div>
+    </div>
+    <div class="photo-frame">
+      <svg class="pulse" viewBox="0 0 400 60" preserveAspectRatio="none"><polyline points="0,30 120,30 135,10 150,50 165,30 400,30" fill="none" stroke="#C68B33" stroke-width="1.5"/></svg>
+      <div class="ph-label">FOTO DE LA DRA. RÍOS<br>(reemplazar por foto real)</div>
+    </div>
+  </div>
+</section>
+
+<div class="ekg-strip">
+  <svg viewBox="0 0 1000 34" preserveAspectRatio="none">
+    <polyline points="0,17 380,17 400,5 415,29 430,17 450,17 465,10 478,24 490,17 1000,17" fill="none" stroke="#C68B33" stroke-width="1.2"/>
+  </svg>
+</div>
+
+<section class="section" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head">
+        <div class="eyebrow">Sobre mí</div>
+        <h2>Formación clínica, mirada humana</h2>
+      </div>
+      <p>Me especialicé en cardiología clínica porque me interesa el corazón como órgano y como historia: cada paciente llega con un contexto, no solo con un estudio.</p>
+      <p>Atiendo con la convicción de que un buen diagnóstico se explica, no se impone. Trabajo en conjunto con clínicos, nutricionistas y kinesiólogos para un abordaje integral.</p>
+    </div>
+    <ul class="credentials">
+      <li><span>Matrícula</span><span>MP 45.821 — Córdoba</span></li>
+      <li><span>Formación</span><span>UNC · Hospital Italiano (residencia)</span></li>
+      <li><span>Posgrado</span><span>Cardiología clínica, SAC</span></li>
+      <li><span>Institución</span><span>Sanatorio Allende</span></li>
+      <li><span>Idiomas</span><span>Español, Inglés</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="especialidades" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Especialidades</div>
+      <h2>Dónde puedo ayudarte</h2>
+    </div>
+    <div class="esp-grid">
+      <div class="esp-card">
+        <div class="num">01</div>
+        <h3>Prevención cardiovascular</h3>
+        <p>Evaluación de riesgo, control de factores y seguimiento a largo plazo.</p>
+      </div>
+      <div class="esp-card">
+        <div class="num">02</div>
+        <h3>Hipertensión arterial</h3>
+        <p>Diagnóstico, ajuste de tratamiento y monitoreo domiciliario.</p>
+      </div>
+      <div class="esp-card">
+        <div class="num">03</div>
+        <h3>Ecocardiografía</h3>
+        <p>Estudios funcionales realizados e interpretados en el mismo consultorio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contenido">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Contenido</div>
+      <h2>Explico lo que veo en el consultorio</h2>
+    </div>
+    <div class="content-strip">
+      <div class="clip"><span class="tag">Reel · IG</span></div>
+      <div class="clip"><span class="tag">Short · YT</span></div>
+      <div class="clip"><span class="tag">Reel · IG</span></div>
+      <div class="clip"><span class="tag">Short · YT</span></div>
+    </div>
+    <div class="trust-row" style="margin-top:40px; border-top:none;">
+      <div class="item">SANATORIO ALLENDE</div>
+      <div class="item">OSDE</div>
+      <div class="item">SOCIEDAD ARGENTINA DE CARDIOLOGÍA</div>
+      <div class="item">SWISS MEDICAL</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2>Antes de la consulta</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">¿Atendés obra social o solo particular?</div>
+        <div class="faq-a">Atiendo OSDE y Swiss Medical en consultorio, y modalidad particular con factura para reintegro en otras obras sociales.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Necesito estudios previos para la primera consulta?</div>
+        <div class="faq-a">No es obligatorio. En la primera consulta evaluamos juntos qué estudios hacen falta según tu historia clínica.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Hacés seguimiento a distancia?</div>
+        <div class="faq-a">Sí, para pacientes ya evaluados en consultorio ofrezco seguimiento y ajuste de tratamiento por videoconsulta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Empecemos por escuchar tu historia clínica.</h2>
+        <p>Consultorio en barrio Nueva Córdoba. Turnos de lunes a viernes, mañana y tarde.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <a href="#">WhatsApp: +54 351 000 0000</a>
+        <a href="#">consultas@valentinarios.com.ar</a>
+        <a href="#">Av. Colón 1234, Córdoba</a>
+      </div>
+      <div class="foot-col">
+        <h4>Redes</h4>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>DRA. VALENTINA RÍOS · CARDIOLOGÍA CLÍNICA</span>
+      <span>Ejemplo de mapeo — Médicos Digitales / Dosveintidos</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click', ()=>{
+      const item = q.parentElement;
+      document.querySelectorAll('.faq-item').forEach(i=>{ if(i!==item) i.classList.remove('open'); });
+      item.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
